@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+               xmlns:s="library://ns.adobe.com/flex/spark"
+               xmlns:esri="http://www.esri.com/2008/ags"
+               pageTitle="Attribute Table and Map">
+
+    <s:layout>
+        <s:VerticalLayout horizontalAlign="center"
+                          verticalAlign="middle"/>
+    </s:layout>
+
+    <fx:Style>
+        @namespace s "library://ns.adobe.com/flex/spark";
+        @namespace esri "http://www.esri.com/2008/ags";
+
+        s|DataGrid{
+            fontSize:14;
+        }
+        s|Label {
+            fontSize: 14;
+        }
+    </fx:Style>
+
+    <fx:Script>
+        <![CDATA[
+            import com.esri.ags.Graphic;
+            import com.esri.ags.events.AttributeTableEvent;
+            import com.esri.ags.layers.supportClasses.FeatureEditResult;
+            import com.esri.ags.layers.supportClasses.FeatureEditResults;
+            import com.esri.ags.layers.supportClasses.Field;
+
+            import mx.controls.Alert;
+            import mx.rpc.AsyncResponder;
+            import mx.rpc.Fault;
+
+            protected function at_updateFeatureHandler(event:AttributeTableEvent):void
+            {
+                const attributes:Object={};
+                const objectIdField:String=event.featureLayer.layerDetails.objectIdField;
+                attributes[objectIdField]=event.feature.attributes[objectIdField];
+                attributes[event.field.name]=event.newValue;
+
+                // change the attributes on client right away
+                event.feature.attributes[event.field.name]=event.newValue;
+
+                const feature:Graphic=new Graphic(null, null, attributes);
+                const updates:Array=[feature];
+
+                // APPLY EDITS - save to server
+                event.featureLayer.applyEdits(null, updates, null, false, new AsyncResponder(featureLayer_editsCompleteHandler, featureLayer_faultHandler, {feature: event.feature, field: event.field, oldValue: event.oldValue}));
+            }
+
+            protected function at_deleteFeaturesHandler(event:AttributeTableEvent):void
+            {
+                const deletes:Array=event.features;
+                event.featureLayer.applyEdits(null, null, deletes, false, new AsyncResponder(featureLayer_editsCompleteHandler, featureLayer_faultHandler));
+            }
+
+            private function featureLayer_editsCompleteHandler(featureEditResults:FeatureEditResults, token:Object=null):void
+            {
+                var doRefresh:Boolean=false;
+
+                for each (var deleteResult:FeatureEditResult in featureEditResults.deleteResults)
+                {
+                    if (deleteResult.success === false)
+                    {
+                        Alert.show("Could not delete feature");
+                        doRefresh=true;
+                    }
+                }
+
+                for each (var updateResult:FeatureEditResult in featureEditResults.updateResults)
+                {
+                    const feature:Graphic=token.feature;
+                    if (updateResult.success === false)
+                    {
+                        Alert.show("Could not update feature, Restoring old value", "Error");
+
+                        const field:Field=token.field;
+                        feature.attributes[field.name]=token.oldValue;
+                        doRefresh=true;
+                    }
+                    else
+                    {
+                        feature.refresh();
+                    }
+                }
+
+                if (doRefresh)
+                {
+                    myAttributeTable.refresh();
+                }
+            }
+
+            private function featureLayer_faultHandler(fault:Fault, token:Object=null):void
+            {
+                Alert.show(fault.faultString, "Fault");
+                myAttributeTable.refresh();
+            }
+        ]]>
+    </fx:Script>
+
+    <esri:Map>
+        <esri:extent>
+            <esri:Extent xmin="-13635000"
+                         ymin="4550000"
+                         xmax="-13628000"
+                         ymax="4553000"/>
+        </esri:extent>
+        <esri:ArcGISTiledMapServiceLayer/>
+        <esri:FeatureLayer id="myFeatureLayer"
+                           outFields="[req_type,req_date,req_time,district,status,address]"
+                           url="http://sampleserver6.arcgisonline.com/arcgis/rest/services/SF311/FeatureServer/0"/>
+    </esri:Map>
+
+    <esri:AttributeTable id="myAttributeTable"
+                         width="90%"
+                         height="90%"
+                         updateFeature="at_updateFeatureHandler(event)"
+                         deleteFeatures="at_deleteFeaturesHandler(event)"
+                         featureLayer="{myFeatureLayer}"/>
+</s:Application>
