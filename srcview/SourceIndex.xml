@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<index>
+	<title>Source of devsummit2013-flex-samples</title>
+	<nodes>
+		<node label="src">
+			<node icon="mxmlAppIcon" selected="true" label="AttributeTable_Basic.mxml" url="source/AttributeTable_Basic.mxml.html"/>
+			<node icon="mxmlIcon" label="AttributeTable_Editing.mxml" url="source/AttributeTable_Editing.mxml.html"/>
+			<node icon="mxmlIcon" label="AttributeTable_Map.mxml" url="source/AttributeTable_Map.mxml.html"/>
+			<node icon="mxmlIcon" label="WebTiledLayer_Basic.mxml" url="source/WebTiledLayer_Basic.mxml.html"/>
+			<node icon="mxmlIcon" label="WebTiledLayer_CSV.mxml" url="source/WebTiledLayer_CSV.mxml.html"/>
+		</node>
+	</nodes>
+	<zipfile label="Download source (ZIP, 8K)" url="devsummit2013-flex-samples.zip">
+	</zipfile>
+	<sdklink label="Download Flex SDK" url="http://www.adobe.com/go/flex451_sdk_download">
+	</sdklink>
+</index>
