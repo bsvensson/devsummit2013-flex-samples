@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+               xmlns:s="library://ns.adobe.com/flex/spark"
+               xmlns:esri="http://www.esri.com/2008/ags"
+               pageTitle="WebTiled Layer - Open Cycle Map">
+
+    <esri:Map level="9"
+              wrapAround180="true">
+        <esri:center>
+            <esri:WebMercatorMapPoint lon="-118.7"
+                                      lat="34.1"/>
+        </esri:center>
+        <esri:WebTiledLayer id="webTiledLayer"
+                            copyright="OpenCycleMap, © OpenStreetMap contributors"
+                            subDomains="['a','b','c']"
+                            urlTemplate="http://\{subDomain\}.tile.opencyclemap.org/cycle/\{level\}/\{col\}/\{row\}.png"/>
+    </esri:Map>
+</s:Application>

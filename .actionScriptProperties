@@ -18,6 +18,8 @@
     <application path="AttributeTable_Basic.mxml"/>
     <application path="AttributeTable_Map.mxml"/>
     <application path="AttributeTable_Editing.mxml"/>
+    <application path="WebTiledLayer_Basic.mxml"/>
+    <application path="WebTiledLayer_CSV.mxml"/>
   </applications>
   <modules/>
   <buildCSSFiles/>
