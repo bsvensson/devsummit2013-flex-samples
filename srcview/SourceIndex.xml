@@ -2,6 +2,13 @@
 <index>
 	<title>Source of devsummit2013-flex-samples</title>
 	<nodes>
+		<node label="html-template">
+			<node icon="htmlIcon" label="index.template.html" url="source/html-template/index.template.html"/>
+			<node icon="swfIcon" label="playerProductInstall.swf" url="source/html-template/playerProductInstall.swf"/>
+			<node label="swfobject.js" url="source/html-template/swfobject.js.txt"/>
+		</node>
+		<node label="libs">
+		</node>
 		<node label="src">
 			<node icon="mxmlAppIcon" selected="true" label="AttributeTable_Basic.mxml" url="source/AttributeTable_Basic.mxml.html"/>
 			<node icon="mxmlIcon" label="AttributeTable_Editing.mxml" url="source/AttributeTable_Editing.mxml.html"/>
@@ -9,8 +16,9 @@
 			<node icon="mxmlIcon" label="WebTiledLayer_Basic.mxml" url="source/WebTiledLayer_Basic.mxml.html"/>
 			<node icon="mxmlIcon" label="WebTiledLayer_CSV.mxml" url="source/WebTiledLayer_CSV.mxml.html"/>
 		</node>
+		<node label="README.md" url="source/README.md"/>
 	</nodes>
-	<zipfile label="Download source (ZIP, 8K)" url="devsummit2013-flex-samples.zip">
+	<zipfile label="Download source (ZIP, 18K)" url="devsummit2013-flex-samples.zip">
 	</zipfile>
 	<sdklink label="Download Flex SDK" url="http://www.adobe.com/go/flex451_sdk_download">
 	</sdklink>

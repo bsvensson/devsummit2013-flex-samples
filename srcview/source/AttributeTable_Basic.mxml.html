@@ -11,7 +11,8 @@
 <span class="MXMLComponent_Tag">&lt;s:Application</span><span class="MXMLDefault_Text"> xmlns:fx="</span><span class="MXMLString">http://ns.adobe.com/mxml/2009</span><span class="MXMLDefault_Text">"
                xmlns:s="</span><span class="MXMLString">library://ns.adobe.com/flex/spark</span><span class="MXMLDefault_Text">"
                xmlns:esri="</span><span class="MXMLString">http://www.esri.com/2008/ags</span><span class="MXMLDefault_Text">"
-               pageTitle="</span><span class="MXMLString">Attribute Table - nada mas</span><span class="MXMLDefault_Text">" viewSourceURL="</span><span class="MXMLString">srcview/index.html</span><span class="MXMLDefault_Text">"</span><span class="MXMLComponent_Tag">&gt;</span>
+               pageTitle="</span><span class="MXMLString">Attribute Table - nada mas</span><span class="MXMLDefault_Text">"
+               viewSourceURL="</span><span class="MXMLString">srcview/index.html</span><span class="MXMLDefault_Text">"</span><span class="MXMLComponent_Tag">&gt;</span>
 
     <span class="MXMLComponent_Tag">&lt;s:layout&gt;</span>
         <span class="MXMLComponent_Tag">&lt;s:VerticalLayout</span><span class="MXMLDefault_Text"> horizontalAlign="</span><span class="MXMLString">center</span><span class="MXMLDefault_Text">"
@@ -21,7 +22,8 @@
     <span class="MXMLSpecial_Tag">&lt;fx:Declarations&gt;</span>
         <span class="MXMLComponent_Tag">&lt;esri:FeatureLayer</span><span class="MXMLDefault_Text"> id="</span><span class="MXMLString">myFeatureLayer</span><span class="MXMLDefault_Text">"
                            outFields="</span><span class="MXMLString">*</span><span class="MXMLDefault_Text">"
-                           url="</span><span class="MXMLString">http://sampleserver3.arcgisonline.com/ArcGIS/rest/services/SanFrancisco/311Incidents/MapServer/0</span><span class="MXMLDefault_Text">"</span><span class="MXMLComponent_Tag">/&gt;</span>
+                           url="</span><span class="MXMLString">http://sampleserver3.arcgisonline.com/ArcGIS/rest/services/SanFrancisco/311Incidents/MapServer/0</span><span class="MXMLDefault_Text">"
+                           definitionExpression="</span><span class="MXMLString">OBJECTID&gt;5982100 AND req_id IS NOT NULL</span><span class="MXMLDefault_Text">"</span><span class="MXMLComponent_Tag">/&gt;</span>
     <span class="MXMLSpecial_Tag">&lt;/fx:Declarations&gt;</span>
 
     <span class="MXMLComponent_Tag">&lt;esri:AttributeTable</span><span class="MXMLDefault_Text"> id="</span><span class="MXMLString">myAttributeTable</span><span class="MXMLDefault_Text">"
