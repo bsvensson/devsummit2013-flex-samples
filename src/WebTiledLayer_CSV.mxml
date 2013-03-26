@@ -7,14 +7,14 @@
     <fx:Declarations>
         <esri:SimpleMarkerSymbol id="crossRed"
                                  color="0xFF0000"
-                                 size="22"
+                                 size="30"
                                  alpha="0.7"
                                  style="cross">
             <esri:SimpleLineSymbol width="4"/>
         </esri:SimpleMarkerSymbol>
-        <esri:SimpleMarkerSymbol id="crossGreen"
-                                 color="0x00FF00"
-                                 size="22"
+        <esri:SimpleMarkerSymbol id="crossPineapple"
+                                 color="0xFCDC3B"
+                                 size="30"
                                  alpha="0.7"
                                  style="cross">
             <esri:SimpleLineSymbol width="4"/>
@@ -26,23 +26,16 @@
             <esri:WebMercatorMapPoint lon="-150"
                                       lat="33"/>
         </esri:center>
-        <esri:WebTiledLayer id="webTiledLayer"
-                            alpha="0.3"
-                            copyright="OpenCycleMap, © OpenStreetMap contributors"
+        <esri:WebTiledLayer copyright="OpenCycleMap, © OpenStreetMap contributors"
                             subDomains="['a','b','c']"
                             urlTemplate="http://\{subDomain\}.tile.opencyclemap.org/cycle/\{level\}/\{col\}/\{row\}.png"/>
-        <!--<esri:KMLLayer url="http://connect.garmin.com/proxy/activity-service-1.0/kml/activity/18415163?full=true"/>-->
-        <!--<esri:KMLLayer url="http://connect.garmin.com/proxy/activity-service-1.0/kml/activity/18562048?full=true"/>
-        <esri:CSVLayer latitudeFieldName="Lat"
-        longitudeFieldName="Lon"
-        url="http://earthquake.usgs.gov/earthquakes/catalogs/eqs7day-M2.5.txt"/>-->
         <esri:CSVLayer latitudeFieldName="GPSLatitude"
                        longitudeFieldName="GPSLongitude"
                        symbol="{crossRed}"
                        url="https://dl.dropbox.com/u/2142726/pix_2012.csv"/>
         <esri:CSVLayer latitudeFieldName="GPSLatitude"
                        longitudeFieldName="GPSLongitude"
-                       symbol="{crossGreen}"
+                       symbol="{crossPineapple}"
                        url="https://dl.dropbox.com/u/2142726/pix_2011.csv"/>
     </esri:Map>
 </s:Application>
